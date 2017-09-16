@@ -26,4 +26,13 @@ public enum CardValue {
         return symbol;
     }
 
+    public static CardValue parseValue(final String input) {
+        for (CardValue value : CardValue.values()) {
+            if(value.symbol.equals(input)) {
+                return value;
+            }
+        }
+        return null;
+    }
+
 }

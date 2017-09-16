@@ -17,4 +17,13 @@ public enum CardSuit {
         return symbol;
     }
 
+    public static CardSuit parseValue(final String input) {
+        for (CardSuit suit : CardSuit.values()) {
+            if(suit.symbol.equals(input)) {
+                return suit;
+            }
+        }
+        return null;
+    }
+
 }
