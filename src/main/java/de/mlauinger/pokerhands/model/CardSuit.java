@@ -17,13 +17,13 @@ public enum CardSuit {
         return symbol;
     }
 
-    public static CardSuit parseValue(final String input) {
+    public static CardSuit parseValue(final String input) throws InvalidInputException {
         for (CardSuit suit : CardSuit.values()) {
             if(suit.symbol.equals(input)) {
                 return suit;
             }
         }
-        return null;
+        throw new InvalidInputException();
     }
 
 }
