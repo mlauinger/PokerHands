@@ -39,4 +39,17 @@ public class Hand {
         return valuesInHand.get(value);
     }
 
+    public void addCard(Card card) {
+        cards.add(card);
+        incrementCounts(card);
+    }
+
+    private void incrementCounts(Card card) {
+        suitsInHand.put(card.getCardSuit(), suitsInHand.get(card.getCardSuit()) + 1);
+        valuesInHand.put(card.getCardValue(), valuesInHand.get(card.getCardValue()) + 1);
+    }
+
+    public void addCards(List<Card> cards) {
+        cards.forEach(card -> addCard(card));
+    }
 }
