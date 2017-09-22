@@ -1,4 +1,4 @@
-package de.mlauinger.pokerhands.model;
+package de.mlauinger.pokerhands.model.hand;
 
 import de.mlauinger.pokerhands.logic.CardSuitComparator;
 import de.mlauinger.pokerhands.logic.CardValueComparator;
@@ -26,7 +26,7 @@ public class Hand {
         return valueCounts;
     }
 
-    int getCount(CardSuit suit) {
+    public int getCount(CardSuit suit) {
         for (SuitCount count : suitCounts) {
             if (count.getValue().equals(suit)) {
                 return count.getCount();
@@ -35,7 +35,7 @@ public class Hand {
         return 0;
     }
 
-    int getCount(CardValue value) {
+    public int getCount(CardValue value) {
         for (ValueCount count : valueCounts) {
             if (count.getValue().equals(value)) {
                 return count.getCount();

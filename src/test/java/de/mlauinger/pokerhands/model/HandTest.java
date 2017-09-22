@@ -4,6 +4,7 @@ import de.mlauinger.pokerhands.model.card.Card;
 import de.mlauinger.pokerhands.model.card.CardSuit;
 import de.mlauinger.pokerhands.model.card.CardValue;
 import de.mlauinger.pokerhands.model.exceptions.InvalidInputException;
+import de.mlauinger.pokerhands.model.hand.Hand;
 import org.junit.Test;
 
 import java.util.Arrays;

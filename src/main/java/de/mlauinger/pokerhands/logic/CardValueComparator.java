@@ -1,6 +1,6 @@
 package de.mlauinger.pokerhands.logic;
 
-import de.mlauinger.pokerhands.model.ValueCount;
+import de.mlauinger.pokerhands.model.hand.ValueCount;
 
 import java.util.Comparator;
 

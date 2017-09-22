@@ -1,4 +1,4 @@
-package de.mlauinger.pokerhands.model;
+package de.mlauinger.pokerhands.model.hand;
 
 import de.mlauinger.pokerhands.model.card.CardSuit;
 

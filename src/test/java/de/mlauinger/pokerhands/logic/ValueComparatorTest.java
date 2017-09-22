@@ -1,7 +1,7 @@
 package de.mlauinger.pokerhands.logic;
 
 import de.mlauinger.pokerhands.model.card.CardValue;
-import de.mlauinger.pokerhands.model.ValueCount;
+import de.mlauinger.pokerhands.model.hand.ValueCount;
 import org.junit.Test;
 
 import java.util.ArrayList;
