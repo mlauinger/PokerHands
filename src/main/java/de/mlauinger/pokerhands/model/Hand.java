@@ -1,15 +1,14 @@
 package de.mlauinger.pokerhands.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Hand {
 
     private List<Card> cards;
     private HashMap<CardSuit, Integer> suitsInHand;
     private HashMap<CardValue, Integer> valuesInHand;
+    private List<ValueCount> valueCounts = new ArrayList<>(3);
+    private List<SuitCount> suitCounts = new ArrayList<>(4);
 
     public Hand() {
         cards = new ArrayList<>();
@@ -47,9 +46,24 @@ public class Hand {
     private void incrementCounts(Card card) {
         suitsInHand.put(card.getCardSuit(), suitsInHand.get(card.getCardSuit()) + 1);
         valuesInHand.put(card.getCardValue(), valuesInHand.get(card.getCardValue()) + 1);
+        for (ValueCount count : valueCounts) {
+            if (count.getValue().equals(card.getCardValue())) {
+                count.increment();
+                return;
+            }
+        }
+        valueCounts.add(new ValueCount(card.getCardValue(), 1));
+
+        for (SuitCount count : suitCounts) {
+            if (count.getValue().equals(card.getCardValue())) {
+                count.increment();
+                return;
+            }
+        }
+        suitCounts.add(new SuitCount(card.getCardSuit(), 1));
     }
 
     public void addCards(List<Card> cards) {
-        cards.forEach(card -> addCard(card));
+        cards.forEach(this::addCard);
     }
 }
