@@ -1,5 +1,8 @@
 package de.mlauinger.pokerhands.model;
 
+import de.mlauinger.pokerhands.logic.CardSuitComparator;
+import de.mlauinger.pokerhands.logic.CardValueComparator;
+
 import java.util.*;
 
 public class Hand {
@@ -12,6 +15,13 @@ public class Hand {
         cards = new ArrayList<>();
     }
 
+    public List<SuitCount> getSuitCounts() {
+        return suitCounts;
+    }
+
+    public List<ValueCount> getValueCounts() {
+        return valueCounts;
+    }
 
     int getCount(CardSuit suit) {
         for (SuitCount count : suitCounts) {
@@ -56,5 +66,7 @@ public class Hand {
 
     public void addCards(List<Card> cards) {
         cards.forEach(this::addCard);
+        suitCounts.sort(new CardSuitComparator());
+        valueCounts.sort(new CardValueComparator());
     }
 }

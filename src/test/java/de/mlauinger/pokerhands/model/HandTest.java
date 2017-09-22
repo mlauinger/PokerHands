@@ -51,4 +51,50 @@ public class HandTest {
         assert 0 == hand.getCount(CardValue.SIX);
     }
 
+    @Test
+    public void testGetHighestCard() throws InvalidInputException {
+        Hand hand = new Hand();
+        List<Card> cards = Arrays.asList(
+                new Card("H", "2"),
+                new Card("S", "K"),
+                new Card("D", "7"),
+                new Card("D", "A"),
+                new Card("C", "5")
+        );
+        hand.addCards(cards);
+
+        assert CardValue.ACE.equals(hand.getValueCounts().get(0).getValue());
+    }
+
+    @Test
+    public void testTwoPairs() throws InvalidInputException {
+        Hand hand = new Hand();
+        List<Card> cards = Arrays.asList(
+                new Card("H", "2"),
+                new Card("S", "5"),
+                new Card("D", "2"),
+                new Card("D", "A"),
+                new Card("C", "5")
+        );
+        hand.addCards(cards);
+
+        assert CardValue.FIVE.equals(hand.getValueCounts().get(0).getValue());
+        assert CardValue.TWO.equals(hand.getValueCounts().get(1).getValue());
+    }
+
+    @Test
+    public void testFourOfOneSuit() throws InvalidInputException {
+        Hand hand = new Hand();
+        List<Card> cards = Arrays.asList(
+                new Card("D", "2"),
+                new Card("S", "K"),
+                new Card("D", "7"),
+                new Card("D", "A"),
+                new Card("D", "5")
+        );
+        hand.addCards(cards);
+
+        assert CardSuit.DIAMOND.equals(hand.getSuitCounts().get(0).getValue());
+    }
+
 }
