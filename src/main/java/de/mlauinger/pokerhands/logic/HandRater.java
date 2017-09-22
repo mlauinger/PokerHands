@@ -1,6 +1,7 @@
 package de.mlauinger.pokerhands.logic;
 
 import de.mlauinger.pokerhands.model.*;
+import de.mlauinger.pokerhands.model.exceptions.NotAPokerHandException;
 
 public class HandRater {
 

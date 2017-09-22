@@ -1,5 +1,6 @@
 package de.mlauinger.pokerhands.model;
 
+import de.mlauinger.pokerhands.model.exceptions.InvalidInputException;
 import org.junit.Test;
 
 public class CardTest {

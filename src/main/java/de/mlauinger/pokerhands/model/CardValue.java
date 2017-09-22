@@ -1,5 +1,7 @@
 package de.mlauinger.pokerhands.model;
 
+import de.mlauinger.pokerhands.model.exceptions.InvalidInputException;
+
 public enum CardValue {
 
     TWO("2"),
