@@ -2,6 +2,9 @@ package de.mlauinger.pokerhands.model;
 
 import de.mlauinger.pokerhands.logic.CardSuitComparator;
 import de.mlauinger.pokerhands.logic.CardValueComparator;
+import de.mlauinger.pokerhands.model.card.Card;
+import de.mlauinger.pokerhands.model.card.CardSuit;
+import de.mlauinger.pokerhands.model.card.CardValue;
 
 import java.util.*;
 

@@ -1,6 +1,6 @@
 package de.mlauinger.pokerhands.logic;
 
-import de.mlauinger.pokerhands.model.CardValue;
+import de.mlauinger.pokerhands.model.card.CardValue;
 import de.mlauinger.pokerhands.model.ValueCount;
 import org.junit.Test;
 

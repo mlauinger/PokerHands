@@ -1,6 +1,8 @@
 package de.mlauinger.pokerhands.logic;
 
 import de.mlauinger.pokerhands.model.*;
+import de.mlauinger.pokerhands.model.card.Card;
+import de.mlauinger.pokerhands.model.card.CardValue;
 import de.mlauinger.pokerhands.model.exceptions.InvalidInputException;
 import de.mlauinger.pokerhands.model.exceptions.NotAPokerHandException;
 import org.junit.Test;

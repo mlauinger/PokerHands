@@ -1,5 +1,7 @@
 package de.mlauinger.pokerhands.model;
 
+import de.mlauinger.pokerhands.model.card.CardValue;
+
 public class HandRating {
 
     private String handName;

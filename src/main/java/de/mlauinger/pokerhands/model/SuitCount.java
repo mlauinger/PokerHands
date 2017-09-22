@@ -1,5 +1,7 @@
 package de.mlauinger.pokerhands.model;
 
+import de.mlauinger.pokerhands.model.card.CardSuit;
+
 public class SuitCount extends Count {
     private CardSuit value;
 
