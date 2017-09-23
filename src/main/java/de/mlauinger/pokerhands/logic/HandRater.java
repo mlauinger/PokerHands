@@ -11,26 +11,26 @@ public class HandRater {
     public static void determineRating(Hand hand) throws NotAPokerHandException {
         CardValue highestCard = hand.getValueCounts().get(0).getValue();
 
-        if (2 <= hand.getValueCounts().get(0).getCount()) {
-            if (3 <= hand.getValueCounts().get(0).getCount()) {
-                if (4 == hand.getValueCounts().get(0).getCount()) {
+        if (hasAtLeastOnePair(hand)) {
+            if (containsThreeOfAKind(hand)) {
+                if (containsFourOfAKind(hand)) {
                     hand.setRating(new HandRating("Four of a kind", 7, highestCard));
                 } else {
-                    if (2 == hand.getValueCounts().get(1).getCount()) {
+                    if (containsFullHouse(hand)) {
                         hand.setRating(new HandRating("Full House", 6, highestCard));
                     } else {
                         hand.setRating(new HandRating("Three of a kind", 3, highestCard));
                     }
                 }
             } else {
-                if (2 == hand.getValueCounts().get(1).getCount()) {
+                if (containsTwoPairs(hand)) {
                     hand.setRating(new HandRating("Two Pairs", 2, highestCard));
                 } else {
                     hand.setRating(new HandRating("Pair", 1, highestCard));
                 }
             }
         } else {
-            if (5 == hand.getSuitCounts().get(0).getCount()) {
+            if (containsFlash(hand)) {
                 if (isStraight(hand)) {
                     hand.setRating(new HandRating("Straight Flush", 8, highestCard));
                 } else {
@@ -46,10 +46,18 @@ public class HandRater {
         }
     }
 
+    private static boolean hasAtLeastOnePair(Hand hand) {
+        return 2 <= hand.getValueCounts().get(0).getCount();
+    }
+
+    private static boolean containsFlash(Hand hand) {
+        return 5 == hand.getSuitCounts().get(0).getCount();
+    }
+
     private static boolean isStraight(Hand hand) {
         for (int i = hand.getValueCounts().size() - 1; i > 1; i--) {
             ValueCount value = hand.getValueCounts().get(i);
-            ValueCount nextValue = hand.getValueCounts().get(i -1);
+            ValueCount nextValue = hand.getValueCounts().get(i - 1);
             if (null != nextValue) {
                 if (!(value.getValue().ordinal() + 1 == nextValue.getValue().ordinal())) {
                     return false;
@@ -57,6 +65,22 @@ public class HandRater {
             }
         }
         return true;
+    }
+
+    private static boolean containsThreeOfAKind(Hand hand) {
+        return 3 <= hand.getValueCounts().get(0).getCount();
+    }
+
+    private static boolean containsFourOfAKind(Hand hand) {
+        return 4 == hand.getValueCounts().get(0).getCount();
+    }
+
+    private static boolean containsTwoPairs(Hand hand) {
+        return 2 == hand.getValueCounts().get(0).getCount() && 2 == hand.getValueCounts().get(1).getCount();
+    }
+
+    private static boolean containsFullHouse(Hand hand) {
+        return 3 == hand.getValueCounts().get(0).getCount() && 2 == hand.getValueCounts().get(1).getCount();
     }
 
 }
