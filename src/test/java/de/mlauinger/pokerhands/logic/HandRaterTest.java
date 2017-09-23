@@ -24,9 +24,9 @@ public class HandRaterTest {
                 new Card("C", "2")
         );
         hand.addCards(cards);
-        HandRating rating = HandRater.determineRating(hand);
-        assert 0 == rating.getRank();
-        assert CardValue.ACE == rating.getHighestCard();
+        HandRater.determineRating(hand);
+        assert 0 == hand.getRating().getRank();
+        assert CardValue.ACE == hand.getRating().getHighestCard();
     }
 
     @Test
@@ -40,9 +40,9 @@ public class HandRaterTest {
                 new Card("C", "2")
         );
         hand.addCards(cards);
-        HandRating rating = HandRater.determineRating(hand);
-        assert 1 == rating.getRank();
-        assert CardValue.KING == rating.getHighestCard();
+        HandRater.determineRating(hand);
+        assert 1 == hand.getRating().getRank();
+        assert CardValue.KING == hand.getRating().getHighestCard();
     }
 
     @Test
@@ -56,9 +56,9 @@ public class HandRaterTest {
                 new Card("C", "2")
         );
         hand.addCards(cards);
-        HandRating rating = HandRater.determineRating(hand);
-        assert 2 == rating.getRank();
-        assert CardValue.KING == rating.getHighestCard();
+        HandRater.determineRating(hand);
+        assert 2 == hand.getRating().getRank();
+        assert CardValue.KING == hand.getRating().getHighestCard();
     }
 
     @Test
@@ -72,9 +72,9 @@ public class HandRaterTest {
                 new Card("C", "2")
         );
         hand.addCards(cards);
-        HandRating rating = HandRater.determineRating(hand);
-        assert 3 == rating.getRank();
-        assert CardValue.TWO == rating.getHighestCard();
+        HandRater.determineRating(hand);
+        assert 3 == hand.getRating().getRank();
+        assert CardValue.TWO == hand.getRating().getHighestCard();
     }
 
     @Test
@@ -88,9 +88,9 @@ public class HandRaterTest {
                 new Card("C", "10")
         );
         hand.addCards(cards);
-        HandRating rating = HandRater.determineRating(hand);
-        assert 4 == rating.getRank();
-        assert CardValue.KING == rating.getHighestCard();
+        HandRater.determineRating(hand);
+        assert 4 == hand.getRating().getRank();
+        assert CardValue.KING == hand.getRating().getHighestCard();
     }
 
     @Test
@@ -104,9 +104,9 @@ public class HandRaterTest {
                 new Card("D", "2")
         );
         hand.addCards(cards);
-        HandRating rating = HandRater.determineRating(hand);
-        assert 5 == rating.getRank();
-        assert CardValue.ACE == rating.getHighestCard();
+        HandRater.determineRating(hand);
+        assert 5 == hand.getRating().getRank();
+        assert CardValue.ACE == hand.getRating().getHighestCard();
     }
 
     @Test
@@ -120,9 +120,9 @@ public class HandRaterTest {
                 new Card("C", "10")
         );
         hand.addCards(cards);
-        HandRating rating = HandRater.determineRating(hand);
-        assert 6 == rating.getRank();
-        assert CardValue.KING == rating.getHighestCard();
+        HandRater.determineRating(hand);
+        assert 6 == hand.getRating().getRank();
+        assert CardValue.KING == hand.getRating().getHighestCard();
     }
 
     @Test
@@ -136,9 +136,9 @@ public class HandRaterTest {
                 new Card("C", "J")
         );
         hand.addCards(cards);
-        HandRating rating = HandRater.determineRating(hand);
-        assert 7 == rating.getRank();
-        assert CardValue.JOKER== rating.getHighestCard();
+        HandRater.determineRating(hand);
+        assert 7 == hand.getRating().getRank();
+        assert CardValue.JOKER== hand.getRating().getHighestCard();
     }
 
     @Test
@@ -152,9 +152,9 @@ public class HandRaterTest {
                 new Card("D", "10")
         );
         hand.addCards(cards);
-        HandRating rating = HandRater.determineRating(hand);
-        assert 8 == rating.getRank();
-        assert CardValue.KING == rating.getHighestCard();
+        HandRater.determineRating(hand);
+        assert 8 == hand.getRating().getRank();
+        assert CardValue.KING == hand.getRating().getHighestCard();
     }
 
 }

@@ -8,39 +8,39 @@ import de.mlauinger.pokerhands.model.hand.ValueCount;
 
 public class HandRater {
 
-    public static HandRating determineRating(Hand hand) throws NotAPokerHandException {
+    public static void determineRating(Hand hand) throws NotAPokerHandException {
         CardValue highestCard = hand.getValueCounts().get(0).getValue();
 
         if (2 <= hand.getValueCounts().get(0).getCount()) {
             if (3 <= hand.getValueCounts().get(0).getCount()) {
                 if (4 == hand.getValueCounts().get(0).getCount()) {
-                    return new HandRating("Four of a kind", 7, highestCard);
+                    hand.setRating(new HandRating("Four of a kind", 7, highestCard));
                 } else {
                     if (2 == hand.getValueCounts().get(1).getCount()) {
-                        return new HandRating("Full House", 6, highestCard);
+                        hand.setRating(new HandRating("Full House", 6, highestCard));
                     } else {
-                        return new HandRating("Three of a kind", 3, highestCard);
+                        hand.setRating(new HandRating("Three of a kind", 3, highestCard));
                     }
                 }
             } else {
                 if (2 == hand.getValueCounts().get(1).getCount()) {
-                    return new HandRating("Two Pairs", 2, highestCard);
+                    hand.setRating(new HandRating("Two Pairs", 2, highestCard));
                 } else {
-                    return new HandRating("Pair", 1, highestCard);
+                    hand.setRating(new HandRating("Pair", 1, highestCard));
                 }
             }
         } else {
             if (5 == hand.getSuitCounts().get(0).getCount()) {
                 if (isStraight(hand)) {
-                    return new HandRating("Straight Flush", 8, highestCard);
+                    hand.setRating(new HandRating("Straight Flush", 8, highestCard));
                 } else {
-                    return new HandRating("Flush", 5, highestCard);
+                    hand.setRating(new HandRating("Flush", 5, highestCard));
                 }
             } else {
                 if (isStraight(hand)) {
-                    return new HandRating("Straight", 4, highestCard);
+                    hand.setRating(new HandRating("Straight", 4, highestCard));
                 } else {
-                    return new HandRating("High Card", 0, highestCard);
+                    hand.setRating(new HandRating("High Card", 0, highestCard));
                 }
             }
         }

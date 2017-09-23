@@ -13,6 +13,7 @@ public class Hand {
     private List<Card> cards;
     private List<ValueCount> valueCounts = new ArrayList<>(3);
     private List<SuitCount> suitCounts = new ArrayList<>(4);
+    private HandRating rating;
 
     public Hand() {
         cards = new ArrayList<>();
@@ -71,5 +72,13 @@ public class Hand {
         cards.forEach(this::addCard);
         suitCounts.sort(new CardSuitComparator());
         valueCounts.sort(new CardValueComparator());
+    }
+
+    public HandRating getRating() {
+        return rating;
+    }
+
+    public void setRating(HandRating rating) {
+        this.rating = rating;
     }
 }
