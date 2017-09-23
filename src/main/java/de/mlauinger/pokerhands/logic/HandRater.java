@@ -1,14 +1,13 @@
 package de.mlauinger.pokerhands.logic;
 
 import de.mlauinger.pokerhands.model.card.CardValue;
-import de.mlauinger.pokerhands.model.exceptions.NotAPokerHandException;
 import de.mlauinger.pokerhands.model.hand.Hand;
 import de.mlauinger.pokerhands.model.hand.HandRating;
 import de.mlauinger.pokerhands.model.hand.ValueCount;
 
 public class HandRater {
 
-    public static void determineRating(Hand hand) throws NotAPokerHandException {
+    public static void determineRating(Hand hand) {
         CardValue highestCard = hand.getValueCounts().get(0).getValue();
 
         if (hasAtLeastOnePair(hand)) {

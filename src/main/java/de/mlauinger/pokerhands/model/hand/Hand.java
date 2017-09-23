@@ -2,6 +2,7 @@ package de.mlauinger.pokerhands.model.hand;
 
 import de.mlauinger.pokerhands.logic.CardSuitComparator;
 import de.mlauinger.pokerhands.logic.CardValueComparator;
+import de.mlauinger.pokerhands.logic.HandRater;
 import de.mlauinger.pokerhands.model.card.Card;
 import de.mlauinger.pokerhands.model.card.CardSuit;
 import de.mlauinger.pokerhands.model.card.CardValue;
@@ -72,6 +73,7 @@ public class Hand {
         cards.forEach(this::addCard);
         suitCounts.sort(new CardSuitComparator());
         valueCounts.sort(new CardValueComparator());
+        HandRater.determineRating(this);
     }
 
     public HandRating getRating() {
