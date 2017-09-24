@@ -48,25 +48,32 @@ public class Hand {
 
     public void addCard(Card card) {
         cards.add(card);
-        incrementCounts(card);
+        if (!valueCountIncremented(card)) {
+            valueCounts.add(new ValueCount(card.getCardValue(), 1));
+        }
+        if (!suitCountIncremented(card)) {
+            suitCounts.add(new SuitCount(card.getCardSuit(), 1));
+        }
     }
 
-    private void incrementCounts(Card card) {
+    private boolean valueCountIncremented(Card card) {
         for (ValueCount count : valueCounts) {
             if (count.getValue().equals(card.getCardValue())) {
                 count.increment();
-                break;
+                return true;
             }
         }
-        valueCounts.add(new ValueCount(card.getCardValue(), 1));
+        return false;
+    }
 
+    private boolean suitCountIncremented(Card card) {
         for (SuitCount count : suitCounts) {
             if (count.getValue().equals(card.getCardSuit())) {
                 count.increment();
-                break;
+                return true;
             }
         }
-        suitCounts.add(new SuitCount(card.getCardSuit(), 1));
+        return false;
     }
 
     public void addCards(List<Card> cards) {
