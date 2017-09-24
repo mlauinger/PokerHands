@@ -1,12 +1,9 @@
 package de.mlauinger.pokerhands;
 
 import de.mlauinger.pokerhands.logic.HandComparator;
-import de.mlauinger.pokerhands.logic.HandRater;
 import de.mlauinger.pokerhands.model.card.Card;
 import de.mlauinger.pokerhands.model.exceptions.InvalidInputException;
-import de.mlauinger.pokerhands.model.exceptions.NotAPokerHandException;
 import de.mlauinger.pokerhands.model.hand.Hand;
-import de.mlauinger.pokerhands.model.hand.HandRating;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,6 +15,8 @@ public class Application {
 
     public static void main(String[] args) throws IOException, InvalidInputException {
         Application app = new Application();
+        System.out.println("Welcome to the Poker Hand Compare.");
+        System.out.println("");
         System.out.println("Please enter a poker hand consisting of five cards in the following format: <Suit><Value> <Suit><Value> (e.g. H5 HA DK C9 D6");
 
         List<Hand> inputHands = new ArrayList<>();
@@ -26,9 +25,11 @@ public class Application {
         for(int i = 0; i < 2; i++) {
             String input = reader.readLine();
             Hand hand = new Hand();
-            hand.addCards(app.parseInput(input));
+            hand.addCards(app.parseInput(input.toUpperCase()));
             inputHands.add(hand);
-            System.out.println("You may now enter another hand");
+            if (i < app.getHandsToCompare()) {
+                System.out.println("You may now enter another hand");
+            }
         }
         inputHands.sort(new HandComparator());
         System.out.println("The highest Hand is: " + inputHands.get(inputHands.size() - 1).getRating().getHandName());
@@ -44,4 +45,7 @@ public class Application {
         return cards;
     }
 
+    private int getHandsToCompare() {
+        return 2;
+    }
 }
