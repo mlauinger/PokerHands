@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Application {
 
-    public static void main(String[] args) throws InvalidInputException {
+    public static void main(String[] args) {
         Application app = new Application();
         System.out.println("Welcome to the Poker Hand Compare.");
         System.out.println("");
@@ -23,9 +23,9 @@ public class Application {
 
 
         for (int i = 0; i < app.getHandsToCompare(); i++) {
-            String input = app.readInput();
             Hand hand = new Hand();
-            hand.addCards(app.parseInput(input.toUpperCase()));
+            List<Card> cards = app.handleInput();
+            hand.addCards(cards);
             inputHands.add(hand);
             if (i < app.getHandsToCompare()) {
                 System.out.println("You may now enter another hand");
@@ -34,6 +34,10 @@ public class Application {
         inputHands.sort(new HandComparator());
         System.out.println("The highest Hand is: " + inputHands.get(inputHands.size() - 1).getRating().getHandName());
 
+    }
+
+    private List<Card> handleInput() {
+        return parseInput(readInput().toUpperCase());
     }
 
     private String readInput() {
@@ -50,11 +54,16 @@ public class Application {
         }
     }
 
-    private List<Card> parseInput(String input) throws InvalidInputException {
+    private List<Card> parseInput(String input) {
         List<Card> cards = new ArrayList<>();
         String parts[] = input.split(" ");
         for (String part : parts) {
-            cards.add(new Card(part.trim().substring(0, 1), part.trim().substring(1)));
+            try {
+                cards.add(new Card(part.trim().substring(0, 1), part.trim().substring(1)));
+            } catch (InvalidInputException e) {
+                System.err.println("Your input is not a valid poker hand according to the given format (H5 HA DK C9 D6). Please enter a valid hand!");
+                return handleInput();
+            }
         }
         return cards;
     }
