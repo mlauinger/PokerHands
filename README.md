@@ -10,7 +10,7 @@ H5 H6 DQ CJ C10
 
 ## Run the Program
 
-Prerequisites you need Maven and Java 8
+Prerequisites: Maven and JDK 8
 
 1) Clone the repository:
 ```
