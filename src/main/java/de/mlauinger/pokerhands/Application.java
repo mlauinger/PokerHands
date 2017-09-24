@@ -27,12 +27,20 @@ public class Application {
             List<Card> cards = app.handleInput();
             hand.addCards(cards);
             inputHands.add(hand);
-            if (i < app.getHandsToCompare()) {
+            if (i < app.getHandsToCompare() - 1) {
                 System.out.println("You may now enter another hand");
             }
         }
         inputHands.sort(new HandComparator());
-        System.out.println("The highest Hand is: " + inputHands.get(inputHands.size() - 1).getRating().getHandName());
+        Hand highestHand = inputHands.get(inputHands.size() - 1);
+        Hand secondHand = inputHands.get(inputHands.size() - 2);
+        if (highestHand.getRating().getRank() == secondHand.getRating().getRank()) {
+            System.out.println("Both Hands are equally rated: " + highestHand.getRating().getHandName());
+            System.out.println(highestHand.toString());
+            System.out.println(secondHand.toString());
+        } else {
+            System.out.println("The highest hand is: " + highestHand.toString() + " (" + highestHand.getRating().getHandName() + ")");
+        }
 
     }
 
@@ -42,15 +50,15 @@ public class Application {
 
     private String readInput() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            try {
-                String input = reader.readLine();
-                if (input.length() < 14) {
-                    throw new IOException("Input to short");
-                }
-                return input;
-            } catch (IOException e) {
-                System.err.println("Whoops! Looks like something went wrong with your input. Please try again!");
-                return readInput();
+        try {
+            String input = reader.readLine();
+            if (input.length() < 14) {
+                throw new IOException("Input to short");
+            }
+            return input;
+        } catch (IOException e) {
+            System.err.println("Whoops! Looks like something went wrong with your input. Please try again!");
+            return readInput();
         }
     }
 

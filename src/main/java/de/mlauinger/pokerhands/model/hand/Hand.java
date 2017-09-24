@@ -8,6 +8,7 @@ import de.mlauinger.pokerhands.model.card.CardSuit;
 import de.mlauinger.pokerhands.model.card.CardValue;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Hand {
 
@@ -89,5 +90,12 @@ public class Hand {
 
     public void setRating(HandRating rating) {
         this.rating = rating;
+    }
+
+    @Override
+    public String toString() {
+        return cards.stream()
+                .map(card -> card.getCardSuit().getSymbol() + card.getCardValue().getSymbol())
+                .collect(Collectors.joining(" "));
     }
 }
