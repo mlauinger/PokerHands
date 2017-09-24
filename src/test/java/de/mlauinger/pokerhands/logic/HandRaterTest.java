@@ -3,7 +3,6 @@ package de.mlauinger.pokerhands.logic;
 import de.mlauinger.pokerhands.model.card.Card;
 import de.mlauinger.pokerhands.model.card.CardValue;
 import de.mlauinger.pokerhands.model.exceptions.InvalidInputException;
-import de.mlauinger.pokerhands.model.exceptions.NotAPokerHandException;
 import de.mlauinger.pokerhands.model.hand.Hand;
 import org.junit.Test;
 
@@ -13,7 +12,7 @@ import java.util.List;
 public class HandRaterTest {
 
     @Test
-    public void testDetermineRankIsHighCard() throws InvalidInputException, NotAPokerHandException {
+    public void testDetermineRankIsHighCard() throws InvalidInputException {
         Hand hand = new Hand();
         List<Card> cards = Arrays.asList(
                 new Card("H", "K"),
@@ -29,7 +28,7 @@ public class HandRaterTest {
     }
 
     @Test
-    public void testDetermineRankIsPair() throws InvalidInputException, NotAPokerHandException {
+    public void testDetermineRankIsPair() throws InvalidInputException {
         Hand hand = new Hand();
         List<Card> cards = Arrays.asList(
                 new Card("H", "K"),
@@ -45,7 +44,7 @@ public class HandRaterTest {
     }
 
     @Test
-    public void testDetermineRankIsTwoPairs() throws InvalidInputException, NotAPokerHandException {
+    public void testDetermineRankIsTwoPairs() throws InvalidInputException {
         Hand hand = new Hand();
         List<Card> cards = Arrays.asList(
                 new Card("H", "K"),
@@ -61,7 +60,7 @@ public class HandRaterTest {
     }
 
     @Test
-    public void testDetermineRankIsThreeOfAKind() throws InvalidInputException, NotAPokerHandException {
+    public void testDetermineRankIsThreeOfAKind() throws InvalidInputException {
         Hand hand = new Hand();
         List<Card> cards = Arrays.asList(
                 new Card("H", "K"),
@@ -77,7 +76,7 @@ public class HandRaterTest {
     }
 
     @Test
-    public void testDetermineRankIsStraight() throws InvalidInputException, NotAPokerHandException {
+    public void testDetermineRankIsStraight() throws InvalidInputException {
         Hand hand = new Hand();
         List<Card> cards = Arrays.asList(
                 new Card("H", "K"),
@@ -93,7 +92,7 @@ public class HandRaterTest {
     }
 
     @Test
-    public void testDetermineRankIsFlush() throws InvalidInputException, NotAPokerHandException {
+    public void testDetermineRankIsFlush() throws InvalidInputException {
         Hand hand = new Hand();
         List<Card> cards = Arrays.asList(
                 new Card("D", "K"),
@@ -109,7 +108,7 @@ public class HandRaterTest {
     }
 
     @Test
-    public void testDetermineRankIsFullHouse() throws InvalidInputException, NotAPokerHandException {
+    public void testDetermineRankIsFullHouse() throws InvalidInputException {
         Hand hand = new Hand();
         List<Card> cards = Arrays.asList(
                 new Card("H", "K"),
@@ -125,7 +124,7 @@ public class HandRaterTest {
     }
 
     @Test
-    public void testDetermineRankIsFourOfAKind() throws InvalidInputException, NotAPokerHandException {
+    public void testDetermineRankIsFourOfAKind() throws InvalidInputException {
         Hand hand = new Hand();
         List<Card> cards = Arrays.asList(
                 new Card("H", "J"),
@@ -141,7 +140,7 @@ public class HandRaterTest {
     }
 
     @Test
-    public void testDetermineRankIsStraightFlush() throws InvalidInputException, NotAPokerHandException {
+    public void testDetermineRankIsStraightFlush() throws InvalidInputException {
         Hand hand = new Hand();
         List<Card> cards = Arrays.asList(
                 new Card("D", "K"),
