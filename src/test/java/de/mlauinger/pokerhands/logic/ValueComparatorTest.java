@@ -33,13 +33,13 @@ public class ValueComparatorTest {
         valueCounts.add(new ValueCount(CardValue.THREE, 1));
         valueCounts.add(new ValueCount(CardValue.ACE, 1));
         valueCounts.add(new ValueCount(CardValue.TWO, 1));
-        valueCounts.add(new ValueCount(CardValue.JOKER, 1));
+        valueCounts.add(new ValueCount(CardValue.JACK, 1));
 
         valueCounts.sort(new CardValueComparator());
 
         assert CardValue.ACE.equals(valueCounts.get(0).getValue());
         assert CardValue.KING.equals(valueCounts.get(1).getValue());
-        assert CardValue.JOKER.equals(valueCounts.get(2).getValue());
+        assert CardValue.JACK.equals(valueCounts.get(2).getValue());
         assert CardValue.SEVEN.equals(valueCounts.get(3).getValue());
         assert CardValue.THREE.equals(valueCounts.get(4).getValue());
         assert CardValue.TWO.equals(valueCounts.get(5).getValue());
@@ -65,12 +65,12 @@ public class ValueComparatorTest {
         valueCounts.add(new ValueCount(CardValue.THREE, 6));
         valueCounts.add(new ValueCount(CardValue.ACE, 2));
         valueCounts.add(new ValueCount(CardValue.TWO, 4));
-        valueCounts.add(new ValueCount(CardValue.JOKER, 4));
+        valueCounts.add(new ValueCount(CardValue.JACK, 4));
 
         valueCounts.sort(new CardValueComparator());
 
         assert CardValue.THREE.equals(valueCounts.get(0).getValue());
-        assert CardValue.JOKER.equals(valueCounts.get(1).getValue());
+        assert CardValue.JACK.equals(valueCounts.get(1).getValue());
         assert CardValue.TWO.equals(valueCounts.get(2).getValue());
         assert CardValue.SEVEN.equals(valueCounts.get(3).getValue());
         assert CardValue.ACE.equals(valueCounts.get(4).getValue());
@@ -85,7 +85,7 @@ public class ValueComparatorTest {
         valueCounts.add(new ValueCount(CardValue.THREE, 4));
         valueCounts.add(new ValueCount(CardValue.ACE, 3));
         valueCounts.add(new ValueCount(CardValue.TWO, 2));
-        valueCounts.add(new ValueCount(CardValue.JOKER, 1));
+        valueCounts.add(new ValueCount(CardValue.JACK, 1));
 
         valueCounts.sort(new CardValueComparator());
 
@@ -94,7 +94,7 @@ public class ValueComparatorTest {
         assert CardValue.THREE.equals(valueCounts.get(2).getValue());
         assert CardValue.ACE.equals(valueCounts.get(3).getValue());
         assert CardValue.TWO.equals(valueCounts.get(4).getValue());
-        assert CardValue.JOKER.equals(valueCounts.get(5).getValue());
+        assert CardValue.JACK.equals(valueCounts.get(5).getValue());
     }
 
     @Test
@@ -102,7 +102,7 @@ public class ValueComparatorTest {
         List<ValueCount> valueCounts = new ArrayList<>();
         valueCounts.add(new ValueCount(CardValue.ACE, 1));
         valueCounts.add(new ValueCount(CardValue.KING, 1));
-        valueCounts.add(new ValueCount(CardValue.JOKER, 1));
+        valueCounts.add(new ValueCount(CardValue.JACK, 1));
         valueCounts.add(new ValueCount(CardValue.SEVEN, 1));
         valueCounts.add(new ValueCount(CardValue.THREE, 1));
         valueCounts.add(new ValueCount(CardValue.TWO, 1));
@@ -111,7 +111,7 @@ public class ValueComparatorTest {
 
         assert CardValue.ACE.equals(valueCounts.get(0).getValue());
         assert CardValue.KING.equals(valueCounts.get(1).getValue());
-        assert CardValue.JOKER.equals(valueCounts.get(2).getValue());
+        assert CardValue.JACK.equals(valueCounts.get(2).getValue());
         assert CardValue.SEVEN.equals(valueCounts.get(3).getValue());
         assert CardValue.THREE.equals(valueCounts.get(4).getValue());
         assert CardValue.TWO.equals(valueCounts.get(5).getValue());

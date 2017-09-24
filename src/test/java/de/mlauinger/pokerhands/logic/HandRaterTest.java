@@ -5,7 +5,6 @@ import de.mlauinger.pokerhands.model.card.CardValue;
 import de.mlauinger.pokerhands.model.exceptions.InvalidInputException;
 import de.mlauinger.pokerhands.model.exceptions.NotAPokerHandException;
 import de.mlauinger.pokerhands.model.hand.Hand;
-import de.mlauinger.pokerhands.model.hand.HandRating;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -138,7 +137,7 @@ public class HandRaterTest {
         hand.addCards(cards);
         HandRater.determineRating(hand);
         assert 7 == hand.getRating().getRank();
-        assert CardValue.JOKER== hand.getRating().getHighestCard();
+        assert CardValue.JACK == hand.getRating().getHighestCard();
     }
 
     @Test
