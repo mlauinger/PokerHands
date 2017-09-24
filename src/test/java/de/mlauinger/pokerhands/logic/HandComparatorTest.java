@@ -18,6 +18,9 @@ public class HandComparatorTest {
     private Hand straightFlush = new Hand();
     private Hand heartFlush = new Hand();
     private Hand diamondFlush = new Hand();
+    private Hand kingSecondHighest = new Hand();
+    private Hand queenSecondHighest = new Hand();
+    private Hand highCard = new Hand();
 
 
     private HandComparator comp = new HandComparator();
@@ -44,7 +47,7 @@ public class HandComparatorTest {
         Card diamondTen = new Card("D", "10");
         Card spadeTen = new Card("S", "10");
         Card diamondTwo = new Card("D", "2");
-
+        Card clubKing = new Card("C", "K");
 
         pair.addCards(Arrays.asList(heartAce, heartJack, heartTen, spadeAce, diamondTwo));
         street.addCards(Arrays.asList(heartAce, heartJack, heartKing, spadeTen, heartQueen));
@@ -53,6 +56,9 @@ public class HandComparatorTest {
         heartFlush.addCards(Arrays.asList(heartAce, heartJack, heartNine, heartQueen, heartTen));
         diamondFlush.addCards(Arrays.asList(diamondAce, diamondJack, diamondQueen, diamondNine, diamondTen ));
         secondPair.addCards(Arrays.asList(diamondAce, heartKing, diamondTwo, diamondQueen, clubAce));
+        kingSecondHighest.addCards(Arrays.asList(heartAce, diamondNine, diamondTen, heartQueen, heartKing));
+        highCard.addCards(Arrays.asList(diamondAce, diamondTwo, heartTen, diamondQueen, clubKing));
+        queenSecondHighest.addCards(Arrays.asList(diamondAce, diamondJack, diamondTwo, diamondQueen, heartTen));
     }
 
     @Test
@@ -81,7 +87,19 @@ public class HandComparatorTest {
 
     @Test
     public void testSameHighestCardShouldBeRatedBySecondHighest() {
+        Assert.assertEquals(HIGHER, comp.compare(kingSecondHighest, queenSecondHighest));
+        Assert.assertEquals(LOWER, comp.compare(queenSecondHighest, kingSecondHighest));
+    }
 
+    @Test
+    public void testSameFourHighestCards() {
+        Assert.assertEquals(HIGHER, comp.compare(kingSecondHighest, highCard));
+        Assert.assertEquals(LOWER, comp.compare(highCard, kingSecondHighest));
+    }
+
+    @Test
+    public void testSameHand() {
+        Assert.assertEquals(SAME, comp.compare(highCard, highCard));
     }
 
 }
