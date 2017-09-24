@@ -13,17 +13,17 @@ import java.util.List;
 
 public class Application {
 
-    public static void main(String[] args) throws IOException, InvalidInputException {
+    public static void main(String[] args) throws InvalidInputException {
         Application app = new Application();
         System.out.println("Welcome to the Poker Hand Compare.");
         System.out.println("");
-        System.out.println("Please enter a poker hand consisting of five cards in the following format: <Suit><Value> <Suit><Value> (e.g. H5 HA DK C9 D6");
+        System.out.println("Please enter a poker hand consisting of five cards in the following format: <Suit><Value> <Suit><Value> (e.g. H5 HA DK C9 D6)");
 
         List<Hand> inputHands = new ArrayList<>();
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        for(int i = 0; i < 2; i++) {
-            String input = reader.readLine();
+
+        for (int i = 0; i < app.getHandsToCompare(); i++) {
+            String input = app.readInput();
             Hand hand = new Hand();
             hand.addCards(app.parseInput(input.toUpperCase()));
             inputHands.add(hand);
@@ -34,6 +34,20 @@ public class Application {
         inputHands.sort(new HandComparator());
         System.out.println("The highest Hand is: " + inputHands.get(inputHands.size() - 1).getRating().getHandName());
 
+    }
+
+    private String readInput() {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            try {
+                String input = reader.readLine();
+                if (input.length() < 14) {
+                    throw new IOException("Input to short");
+                }
+                return input;
+            } catch (IOException e) {
+                System.err.println("Whoops! Looks like something went wrong with your input. Please try again!");
+                return readInput();
+        }
     }
 
     private List<Card> parseInput(String input) throws InvalidInputException {
